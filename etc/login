@@ -1,0 +1,18 @@
+#!/bin/bash
+
+__nvvm_path_remove ()
+{
+  export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`;
+}
+__nvvm_configure_path()
+{
+  local nvvm_root_path="$HOME/.nvvm"
+  [ -z $NVVMROOT ] || nvvm_root_path=$NVVMROOT
+  local nvvm_bin_path="$nvvm_root_path/vims/current/bin"
+  __nvvm_path_remove $nvvm_bin_path
+  export PATH="$nvvm_bin_path:$PATH"
+}
+
+__nvvm_configure_path
+
+# __END__

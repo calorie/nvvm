@@ -1,29 +1,78 @@
 require 'simplecov'
+require 'coveralls'
 
-module SimpleCov::Configuration
-  def clean_filters
-    @filters = []
+FORMATTERS = [
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+].freeze
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(FORMATTERS)
+SimpleCov.start do
+  add_filter '/spec/'
+  add_filter '/vendor/'
+end
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+require 'rspec'
+require 'fileutils'
+require 'tmpdir'
+require 'nvvm'
+require 'nvvm/ext/mkmf'
+
+VERSION1 = 'v0.2.1'.freeze
+VERSION2 = 'v0.2.0'.freeze
+
+RSpec.configure do |config|
+  config.before :suite do
+    cache = cache_dir
+    unless File.exist?(cache)
+      ENV['NVVMROOT'] = cache
+      ENV['NVVMOPT']  = nil
+      FileUtils.mkdir_p(cache)
+      Nvvm::Installer.fetch
+      [VERSION1, VERSION2].each do |v|
+        installer = Nvvm::Installer.new(v, [], true)
+        installer.checkout
+        installer.make_install
+      end
+      Nvvm::Installer.cp_etc
+    end
+  end
+
+  config.before :all do
+    @tmp = Dir.mktmpdir
+    FileUtils.cp_r(cache_dir, @tmp) unless self.class.metadata[:disable_cache]
+    ENV['NVVMROOT'] = File.expand_path(File.join(@tmp, '.nvvm_cache'))
+    ENV['NVVMOPT']  = nil
+  end
+
+  config.after :all do
+    FileUtils.rm_rf(@tmp)
+  end
+
+  config.before(:all, clean: true) { remove_dirs }
+  config.before(:all, vimorg: true) { cp_vimorg_dir }
+  config.before(:all, src: true) { cp_src_dir }
+end
+
+def cache_dir
+  File.expand_path(File.join(File.dirname(__FILE__), '..', '.nvvm_cache'))
+end
+
+def remove_dirs
+  [src_dir, vimorg_dir, vims_dir, etc_dir].each do |dir|
+    FileUtils.rm_rf(dir) if File.exist?(dir)
   end
 end
 
-SimpleCov.configure do
-  clean_filters
-  load_adapter 'test_frameworks'
+def cp_vimorg_dir
+  return if File.exist?(vimorg_dir)
+  FileUtils.mkdir_p(repos_dir)
+  FileUtils.cp_r(File.join(cache_dir, 'repos', 'vimorg'), repos_dir)
 end
 
-ENV["COVERAGE"] && SimpleCov.start do
-  add_filter "/.rvm/"
-end
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-
-require 'rspec'
-require 'nvvm'
-
-# Requires supporting files with custom matchers and macros, etc,
-# in ./support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
-
-RSpec.configure do |config|
-
+def cp_src_dir
+  return if File.exist?(src_dir(@version))
+  FileUtils.mkdir_p(src_dir)
+  FileUtils.cp_r(File.join(cache_dir, 'src', @version), src_dir)
 end
