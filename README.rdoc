@@ -30,7 +30,7 @@ you can set own root:
 == Usage
 
   $ nvvm help
-  $ nvvm install 0.2.2 --enable-rubyinterp
+  $ nvvm install 0.2.2
   $ nvvm install --use latest
   $ nvvm reinstall 0.2.2
   $ nvvm rebuild 0.2.2
