@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.authors = ["YuuShigetani"]
   s.date = "2017-12-24"
-  s.description = "TODO: longer description of your gem"
+  s.description = "Neovim version manager."
   s.email = "s2g4t1n2@gmail.com"
   s.executables = ["nvvm"]
   s.extra_rdoc_files = [
@@ -43,6 +43,7 @@ Gem::Specification.new do |s|
     "lib/nvvm/uninstaller.rb",
     "lib/nvvm/validator.rb",
     "lib/nvvm/version.rb",
+    "nvvm.gemspec",
     "spec/accessor_spec.rb",
     "spec/installer_spec.rb",
     "spec/spec_helper.rb",
@@ -53,8 +54,9 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/calorie/nvvm"
   s.licenses = ["MIT"]
+  s.required_ruby_version = Gem::Requirement.new(">= 1.9")
   s.rubygems_version = "2.5.1"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "Neovim version manager"
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
