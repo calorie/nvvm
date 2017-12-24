@@ -17,10 +17,11 @@ Jeweler::Tasks.new do |gem|
   gem.name = "nvvm"
   gem.homepage = "http://github.com/calorie/nvvm"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Neovim version manager}
+  gem.description = %Q{Neovim version manager.}
   gem.email = "s2g4t1n2@gmail.com"
   gem.authors = ["YuuShigetani"]
+  gem.required_ruby_version = '>= 1.9'
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
