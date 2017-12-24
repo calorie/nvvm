@@ -3,7 +3,7 @@ module Nvvm
     module_function
 
     def dot_dir
-      File.expand_path(ENV['VVMROOT'] || '~/.nvvm')
+      File.expand_path(ENV['NVVMROOT'] || '~/.nvvm')
     end
 
     def etc_dir

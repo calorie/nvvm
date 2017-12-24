@@ -22,13 +22,13 @@ describe 'Version' do
     end
     context 'vims dirctory is not found' do
       before do
-        @tmp_vvmroot   = ENV['VVMROOT']
+        @tmp_vvmroot   = ENV['NVVMROOT']
         @tmp2          = Dir.mktmpdir
-        ENV['VVMROOT'] = @tmp2
+        ENV['NVVMROOT'] = @tmp2
       end
 
       after do
-        ENV['VVMROOT'] = @tmp_vvmroot
+        ENV['NVVMROOT'] = @tmp_vvmroot
         FileUtils.rm_rf(@tmp2)
       end
 
