@@ -10,7 +10,7 @@ module Nvvm
     end
 
     def self.fetch
-      system("git clone --quiet #{VIM_URI} #{repo_dir}") unless File.exist?(repo)
+      system("git clone --quiet #{VIM_URI} #{repo_dir}") unless File.exist?(repo_dir)
     end
 
     def self.pull
