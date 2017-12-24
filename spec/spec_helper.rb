@@ -67,8 +67,7 @@ end
 
 def cp_repo_dir
   return if File.exist?(repo_dir)
-  FileUtils.mkdir_p(repo_dir)
-  FileUtils.cp_r(File.join(cache_dir, 'repo'), repo_dir)
+  FileUtils.cp_r(File.join(cache_dir, 'repo'), dot_dir)
 end
 
 def cp_src_dir

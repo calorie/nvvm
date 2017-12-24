@@ -43,13 +43,8 @@ describe 'Installer', disable_cache: true do
       end
 
       it 'success to pull' do
+        Nvvm::Installer.pull
         expect($?.success?).to be_truthy
-      end
-
-      it 'Neovim is up-to-date' do
-        Dir.chdir(repo_dir) do
-          expect(`export LANG=en_US.UTF-8;git pull`).to match(/Already up-to-date./)
-        end
       end
     end
 
@@ -62,9 +57,9 @@ describe 'Installer', disable_cache: true do
         expect(File.exist?(version_src_dir)).to be_truthy
       end
 
-      it 'exists configure file' do
-        configure = File.join(version_src_dir, 'configure')
-        expect(File.exist?(configure)).to be_truthy
+      it 'exists Makefile file' do
+        makefile = File.join(version_src_dir, 'Makefile')
+        expect(File.exist?(makefile)).to be_truthy
       end
     end
 

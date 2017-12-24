@@ -11,7 +11,7 @@ module Nvvm
       output = []
       src    = src_dir
       return output unless File.exist?(src)
-      Dir.glob(File.join(src, 'v*')).sort.each do |d|
+      Dir.glob(File.join(src, '*')).sort.each do |d|
         output << File.basename(d)
       end
       output
