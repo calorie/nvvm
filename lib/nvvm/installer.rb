@@ -3,7 +3,7 @@ require 'fileutils'
 module Nvvm
   class Installer
     def initialize(version, conf, silent = false)
-      nvvmopt   = ENV['NVVMOPT']
+      nvvmopt  = ENV['NVVMOPT']
       @silent  = silent ? '> /dev/null 2>&1' : ''
       @version = version
       @conf    = conf.flatten.empty? && nvvmopt ? nvvmopt.split(' ') : conf
