@@ -19,6 +19,11 @@ describe 'Version' do
       it 'echo installed vim versions' do
         expect(Nvvm::Version.versions.join("\n")).to eq "#{VERSION2}\n#{VERSION1}"
       end
+
+      it 'echo installed vim versions without current' do
+        Nvvm::Switcher.new(VERSION1).use
+        expect(Nvvm::Version.versions.join("\n")).to eq "#{VERSION2}\n#{VERSION1}"
+      end
     end
     context 'src dirctory is not found' do
       before do
