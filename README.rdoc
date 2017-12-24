@@ -3,6 +3,7 @@
 {<img src="https://badge.fury.io/rb/nvvm.svg" alt="Gem Version" />}[https://badge.fury.io/rb/nvvm]
 {<img src="https://gemnasium.com/badges/github.com/calorie/nvvm.svg" alt="Dependency Status" />}[https://gemnasium.com/github.com/calorie/nvvm]
 {<img src="https://travis-ci.org/calorie/nvvm.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/calorie/nvvm]
+{<img src="https://coveralls.io/repos/github/calorie/nvvm/badge.svg" alt="Coverage Status" />}[https://coveralls.io/github/calorie/nvvm]
 {<img src="https://api.codeclimate.com/v1/badges/be44dd745257c743b47d/maintainability" />}[https://codeclimate.com/github/calorie/nvvm/maintainability]
 {<img src="http://img.shields.io/badge/license-MIT-brightgreen.svg" />}[https://raw.githubusercontent.com/calorie/nvvm/master/LICENSE.txt]
 
