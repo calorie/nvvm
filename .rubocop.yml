@@ -1,0 +1,27 @@
+AllCops:
+  Exclude:
+    - .bundle/**/*
+    - .git/**/*
+    - .nvvm_cache/**/*
+    - coverage/**/*
+    - etc/**/*
+    - pkg/**/*
+    - vendor/**/*
+    - Rakefile
+    - nvvm.gemspec
+LineLength:
+  Max: 90
+Documentation:
+  Enabled: false
+SpecialGlobalVars:
+  Enabled: false
+AssignmentInCondition:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+Style/MixinUsage:
+  Exclude:
+    - 'lib/nvvm.rb'

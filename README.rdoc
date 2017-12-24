@@ -1,9 +1,56 @@
 = nvvm
 
-Description goes here.
+Neovim version manager : forked from https://github.com/calorie/vvm-rb
+
+== Requirements
+
+ruby >= 1.9
+
+== Install
+
+  $ gem install nvvm
+
+or
+
+  $ git clone https://github.com/calorie/nvvm.git
+  $ cd nvvm
+  $ bundle install
+  $ rake install
+
+== Setup
+please add the following line into your ~/.bash_login etc:
+
+  test -f ~/.nvvm/etc/login && source ~/.nvvm/etc/login
+
+you can set own root:
+
+  export NVVMROOT=/your/nvvm/root/path
+  test -f $NVVMROOT/etc/login && source $NVVMROOT/etc/login
+
+== Usage
+
+  $ nvvm help
+  $ nvvm install 0.2.2 --enable-rubyinterp
+  $ nvvm install --use latest
+  $ nvvm reinstall 0.2.2
+  $ nvvm rebuild 0.2.2
+  $ nvvm use 0.2.2
+  $ nvvm list
+  $ nvvm versions
+  $ nvvm uninstall 0.2.2
+  $ nvvm update
+
+after `nvvm use`, you have to reload shell:
+
+  $ exec $SHELL
+
+== Uninstall
+
+  $ gem uninstall nvvm
+  $ rm -rf ~/.nvvm
 
 == Contributing to nvvm
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.
