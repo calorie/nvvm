@@ -9,20 +9,12 @@ describe 'Accessor' do
     expect(File.exist?(etc_dir)).to be_truthy
   end
 
-  it 'can access repos directory' do
-    expect(File.exist?(repos_dir)).to be_truthy
+  it 'can access repo directory' do
+    expect(File.exist?(repo_dir)).to be_truthy
   end
 
   it 'can access src directory' do
     expect(File.exist?(src_dir)).to be_truthy
-  end
-
-  it 'can access vims directory' do
-    expect(File.exist?(vims_dir)).to be_truthy
-  end
-
-  it 'can access vimorg directory' do
-    expect(File.exist?(vimorg_dir)).to be_truthy
   end
 
   it 'can access login file' do

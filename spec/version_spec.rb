@@ -4,7 +4,7 @@ require 'tmpdir'
 
 describe 'Version' do
   describe 'list' do
-    it 'vimorg_dir not found' do
+    it 'repo_dir not found' do
       allow(File).to receive(:exist?).and_return(false)
       expect(proc { Nvvm::Version.list }).to raise_error SystemExit
     end
@@ -15,12 +15,12 @@ describe 'Version' do
   end
 
   describe 'versions' do
-    context 'vims dirctory exists' do
+    context 'src dirctory exists' do
       it 'echo installed vim versions' do
         expect(Nvvm::Version.versions.join("\n")).to eq "#{VERSION1}\n#{VERSION2}"
       end
     end
-    context 'vims dirctory is not found' do
+    context 'src dirctory is not found' do
       before do
         @tmp_vvmroot   = ENV['NVVMROOT']
         @tmp2          = Dir.mktmpdir

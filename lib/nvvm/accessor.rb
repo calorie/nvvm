@@ -10,20 +10,12 @@ module Nvvm
       File.join(dot_dir, 'etc')
     end
 
-    def repos_dir
-      File.join(dot_dir, 'repos')
+    def repo_dir
+      File.join(dot_dir, 'repo')
     end
 
     def src_dir(version = '')
       File.join(dot_dir, 'src', version)
-    end
-
-    def vims_dir(version = '')
-      File.join(dot_dir, 'vims', version)
-    end
-
-    def vimorg_dir
-      File.join(repos_dir, 'vimorg')
     end
 
     def login_file
@@ -31,7 +23,7 @@ module Nvvm
     end
 
     def current_dir
-      File.join(vims_dir, 'current')
+      File.join(src_dir, 'current')
     end
   end
 end

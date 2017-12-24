@@ -8,10 +8,8 @@ module Nvvm
 
     def uninstall
       abort "#{@version} can not be uninstalled; It is currently used." if used?
-      vims = vims_dir(@version)
-      src  = src_dir(@version)
+      src = src_dir(@version)
       FileUtils.rm_rf(src) if File.exist?(src)
-      FileUtils.rm_rf(vims) if File.exist?(vims)
     end
 
     private
@@ -19,7 +17,7 @@ module Nvvm
     def used?
       current = current_dir
       return false unless File.exist?(current)
-      File.readlink(current) == vims_dir(@version)
+      File.readlink(current) == src_dir(@version)
     end
   end
 end

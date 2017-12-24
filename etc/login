@@ -8,7 +8,7 @@ __nvvm_configure_path()
 {
   local nvvm_root_path="$HOME/.nvvm"
   [ -z $NVVMROOT ] || nvvm_root_path=$NVVMROOT
-  local nvvm_bin_path="$nvvm_root_path/vims/current/bin"
+  local nvvm_bin_path="$nvvm_root_path/src/current/build/bin"
   __nvvm_path_remove $nvvm_bin_path
   export PATH="$nvvm_bin_path:$PATH"
 }

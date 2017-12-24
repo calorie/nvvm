@@ -16,8 +16,8 @@ describe 'Switcher' do
       before :all do
         version = VERSION1
         Nvvm::Switcher.new(version).use
-        @vims_dir = vims_dir(version)
-        @current  = current_dir
+        @src_dir = src_dir(version)
+        @current = current_dir
       end
 
       it 'exist current' do
@@ -25,7 +25,7 @@ describe 'Switcher' do
       end
 
       it 'switch current' do
-        expect(File.readlink(@current)).to eq @vims_dir
+        expect(File.readlink(@current)).to eq @src_dir
       end
     end
 

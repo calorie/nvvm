@@ -10,14 +10,12 @@ module Nvvm
     end
 
     def self.fetch
-      FileUtils.mkdir_p(repos_dir)
-      repo = vimorg_dir
-      system("git clone --quiet #{VIM_URI} #{repo}") unless File.exist?(repo)
+      system("git clone --quiet #{VIM_URI} #{repo_dir}") unless File.exist?(repo)
     end
 
     def self.pull
-      fetch unless File.exist?(vimorg_dir)
-      Dir.chdir(vimorg_dir) do
+      fetch unless File.exist?(repo_dir)
+      Dir.chdir(repo_dir) do
         system('git pull --rebase --quiet')
       end
     end
@@ -28,7 +26,7 @@ module Nvvm
       FileUtils.mkdir_p(src)
       archive = "git archive --format=tar #{@version}"
       expand  = "(cd #{src} && tar xf -)"
-      Dir.chdir vimorg_dir do
+      Dir.chdir repo_dir do
         system("#{archive} | #{expand} #{@silent}")
       end
     end

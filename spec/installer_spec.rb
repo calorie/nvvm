@@ -8,15 +8,14 @@ describe 'Installer', disable_cache: true do
   end
 
   let(:version_src_dir) { src_dir(@version) }
-  let(:version_vims_dir) { vims_dir(@version) }
-  let(:vim) { File.join(version_vims_dir, 'bin', 'vim') }
+  let(:nvim) { File.join(version_src_dir, 'build', 'bin', 'nvim') }
 
   describe 'install' do
     context 'fetch', clean: true do
       before(:all) { Nvvm::Installer.fetch }
 
-      it 'exists vimorg dir' do
-        expect(File.exist?(vimorg_dir)).to be_truthy
+      it 'exists repo dir' do
+        expect(File.exist?(repo_dir)).to be_truthy
       end
 
       it 'success to clone' do
@@ -24,20 +23,20 @@ describe 'Installer', disable_cache: true do
       end
 
       it 'exists Makefile file' do
-        expect(File.exist?(File.join(vimorg_dir, 'Makefile'))).to be_truthy
+        expect(File.exist?(File.join(repo_dir, 'Makefile'))).to be_truthy
       end
     end
 
-    context 'pull', clean: true, vimorg: true do
+    context 'pull', clean: true, repo: true do
       before :all do
-        Dir.chdir(vimorg_dir) do
+        Dir.chdir(repo_dir) do
           system('git reset --hard HEAD')
           system('git clean -fdx')
         end
       end
 
-      it 'vimorg_dir not found' do
-        allow(File).to receive(:exist?).with(vimorg_dir).and_return(false)
+      it 'repo_dir not found' do
+        allow(File).to receive(:exist?).with(repo_dir).and_return(false)
         allow(Nvvm::Installer).to receive(:fetch).and_return(true)
         expect(Nvvm::Installer).to receive(:fetch)
         Nvvm::Installer.pull
@@ -48,13 +47,13 @@ describe 'Installer', disable_cache: true do
       end
 
       it 'Neovim is up-to-date' do
-        Dir.chdir(vimorg_dir) do
+        Dir.chdir(repo_dir) do
           expect(`export LANG=en_US.UTF-8;git pull`).to match(/Already up-to-date./)
         end
       end
     end
 
-    context 'checkout', clean: true, vimorg: true do
+    context 'checkout', clean: true, repo: true do
       before :all do
         @installer.checkout
       end
@@ -69,17 +68,13 @@ describe 'Installer', disable_cache: true do
       end
     end
 
-    context 'make_install', clean: true, vimorg: true, src: true do
+    context 'make_install', clean: true, repo: true, src: true do
       before :all do
         @installer.make_install
       end
 
-      it 'exists vims dir' do
-        expect(File.exist?(version_vims_dir)).to be_truthy
-      end
-
-      it 'can execute vim' do
-        expect(system("#{vim} --version > /dev/null 2>&1")).to be_truthy
+      it 'can execute nvim' do
+        expect(system("#{nvim} --version > /dev/null 2>&1")).to be_truthy
       end
     end
 
@@ -117,9 +112,9 @@ describe 'Installer', disable_cache: true do
         @installer.make_clean
       end
 
-      it 'not exists objects dir' do
-        path = File.join(version_src_dir, 'src', 'objects', '*')
-        expect(Dir[path].empty?).to be_truthy
+      it 'not exists build dir' do
+        path = File.join(version_src_dir, 'build')
+        expect(File.exist?(path)).not_to be_truthy
       end
     end
   end

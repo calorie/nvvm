@@ -1,17 +1,17 @@
 module Nvvm
   class Version
     def self.list
-      abort "#{vimorg_dir} not found." unless File.exist?(vimorg_dir)
-      Dir.chdir(vimorg_dir) do
+      abort "#{repo_dir} not found." unless File.exist?(repo_dir)
+      Dir.chdir(repo_dir) do
         return `git tag`.split
       end
     end
 
     def self.versions
       output = []
-      vims   = vims_dir
-      return output unless File.exist?(vims)
-      Dir.glob(File.join(vims, 'v*')).sort.each do |d|
+      src    = src_dir
+      return output unless File.exist?(src)
+      Dir.glob(File.join(src, 'v*')).sort.each do |d|
         output << File.basename(d)
       end
       output

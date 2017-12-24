@@ -51,7 +51,7 @@ RSpec.configure do |config|
   end
 
   config.before(:all, clean: true) { remove_dirs }
-  config.before(:all, vimorg: true) { cp_vimorg_dir }
+  config.before(:all, repo: true) { cp_repo_dir }
   config.before(:all, src: true) { cp_src_dir }
 end
 
@@ -60,15 +60,15 @@ def cache_dir
 end
 
 def remove_dirs
-  [src_dir, vimorg_dir, vims_dir, etc_dir].each do |dir|
+  [src_dir, repo_dir, etc_dir].each do |dir|
     FileUtils.rm_rf(dir) if File.exist?(dir)
   end
 end
 
-def cp_vimorg_dir
-  return if File.exist?(vimorg_dir)
-  FileUtils.mkdir_p(repos_dir)
-  FileUtils.cp_r(File.join(cache_dir, 'repos', 'vimorg'), repos_dir)
+def cp_repo_dir
+  return if File.exist?(repo_dir)
+  FileUtils.mkdir_p(repo_dir)
+  FileUtils.cp_r(File.join(cache_dir, 'repo'), repo_dir)
 end
 
 def cp_src_dir
