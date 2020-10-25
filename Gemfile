@@ -12,5 +12,5 @@ group :development do
   gem 'rdoc', '~> 6.2.1'
   gem 'rspec', '~> 3.9.0'
   gem 'rubocop', '~> 1.0.0'
-  gem 'simplecov', '~> 0.19.0'
+  gem 'simplecov', '< 0.18.0'
 end
