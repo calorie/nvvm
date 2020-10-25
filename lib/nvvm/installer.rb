@@ -17,6 +17,7 @@ module Nvvm
       fetch unless File.exist?(repo_dir)
       Dir.chdir(repo_dir) do
         system('git pull --rebase --quiet')
+        system('git fetch --tags --force --quiet')
       end
     end
 

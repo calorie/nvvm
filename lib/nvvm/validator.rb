@@ -45,7 +45,7 @@ module Nvvm
 
     def find_version
       version_regex = /\Av\d\..+\z|\A(\d\.\d(a|b){0,1}(\.\d+){0,1})\z/
-      regex         = /(\Asystem\z|\Alatest\z|#{version_regex})/
+      regex         = /(\Asystem\z|\Alatest\z|\Anightly\z|#{version_regex})/
       $*.find { |v| v =~ regex }
     end
 

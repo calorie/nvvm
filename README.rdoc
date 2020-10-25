@@ -1,7 +1,6 @@
 = nvvm
 
 {<img src="https://badge.fury.io/rb/nvvm.svg" alt="Gem Version" />}[https://badge.fury.io/rb/nvvm]
-{<img src="https://gemnasium.com/badges/github.com/calorie/nvvm.svg" alt="Dependency Status" />}[https://gemnasium.com/github.com/calorie/nvvm]
 {<img src="https://travis-ci.org/calorie/nvvm.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/calorie/nvvm]
 {<img src="https://coveralls.io/repos/github/calorie/nvvm/badge.svg" alt="Coverage Status" />}[https://coveralls.io/github/calorie/nvvm]
 {<img src="https://api.codeclimate.com/v1/badges/be44dd745257c743b47d/maintainability" />}[https://codeclimate.com/github/calorie/nvvm/maintainability]
@@ -12,7 +11,7 @@ Neovim version manager : forked from https://github.com/calorie/vvm-rb
 
 == Requirements
 
-ruby >= 1.9
+ruby >= 2
 
 == Install
 
@@ -38,14 +37,14 @@ you can set own root:
 == Usage
 
   $ nvvm help
-  $ nvvm install 0.2.2
+  $ nvvm install 0.4.4
   $ nvvm install --use latest
-  $ nvvm reinstall 0.2.2
-  $ nvvm rebuild 0.2.2
-  $ nvvm use 0.2.2
+  $ nvvm reinstall 0.4.4
+  $ nvvm rebuild 0.4.4
+  $ nvvm use 0.4.4
   $ nvvm list
   $ nvvm versions
-  $ nvvm uninstall 0.2.2
+  $ nvvm uninstall 0.4.4
   $ nvvm update
 
 after `nvvm use`, you have to reload shell:

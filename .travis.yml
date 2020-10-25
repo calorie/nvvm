@@ -1,9 +1,7 @@
 language: ruby
 env:
   matrix:
-    - RUBY=2.2.2
-    - RUBY=2.3.0
-    - RUBY=2.4.0
+    - RUBY=2.7.0
 before_install:
   - rvm use $(rvm strings $RUBY) --install --disable-binary --fuzzy
 script:

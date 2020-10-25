@@ -10,7 +10,7 @@ describe 'Version' do
     end
 
     it 'echo available vim versions' do
-      expect(Nvvm::Version.list.join("\n")).to match(/\Anightly\n(v\d\..+(\n){0,1})+\z/)
+      expect(Nvvm::Version.list.join("\n")).to match(/\Anightly\nstable\nuntagged-.+\n(v\d\..+(\n){0,1})+\z/)
     end
   end
 

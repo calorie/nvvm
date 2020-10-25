@@ -19,8 +19,8 @@ require 'tmpdir'
 require 'nvvm'
 require 'nvvm/ext/mkmf'
 
-VERSION1 = 'v0.2.1'.freeze
-VERSION2 = 'v0.2.0'.freeze
+VERSION1 = 'v0.4.3'.freeze
+VERSION2 = 'v0.4.4'.freeze
 
 RSpec.configure do |config|
   config.before :suite do
