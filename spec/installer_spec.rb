@@ -4,7 +4,7 @@ require 'mkmf'
 describe 'Installer', disable_cache: true do
   before :all do
     @version   = VERSION1
-    @installer = Nvvm::Installer.new(@version, [], true)
+    @installer = Nvvm::Installer.new(@version, [], silent: true)
   end
 
   let(:version_src_dir) { src_dir(@version) }

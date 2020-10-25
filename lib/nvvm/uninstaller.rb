@@ -17,6 +17,7 @@ module Nvvm
     def used?
       current = current_dir
       return false unless File.exist?(current)
+
       File.readlink(current) == src_dir(@version)
     end
   end

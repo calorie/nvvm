@@ -31,7 +31,7 @@ RSpec.configure do |config|
       FileUtils.mkdir_p(cache)
       Nvvm::Installer.fetch
       [VERSION1, VERSION2].each do |v|
-        installer = Nvvm::Installer.new(v, [], true)
+        installer = Nvvm::Installer.new(v, [], silent: true)
         installer.checkout
         installer.make_install
       end
@@ -67,11 +67,13 @@ end
 
 def cp_repo_dir
   return if File.exist?(repo_dir)
+
   FileUtils.cp_r(File.join(cache_dir, 'repo'), dot_dir)
 end
 
 def cp_src_dir
   return if File.exist?(src_dir(@version))
+
   FileUtils.mkdir_p(src_dir)
   FileUtils.cp_r(File.join(cache_dir, 'src', @version), src_dir)
 end

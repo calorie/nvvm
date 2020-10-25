@@ -2,7 +2,7 @@ require 'fileutils'
 
 module Nvvm
   class Installer
-    def initialize(version, conf, silent = false)
+    def initialize(version, conf, silent: false)
       nvvmopt  = ENV['NVVMOPT']
       @silent  = silent ? '> /dev/null 2>&1' : ''
       @version = version
@@ -24,6 +24,7 @@ module Nvvm
     def checkout
       src = src_dir(@version)
       return if File.exist?(src)
+
       FileUtils.mkdir_p(src)
       archive = "git archive --format=tar #{@version}"
       expand  = "(cd #{src} && tar xf -)"
@@ -63,6 +64,7 @@ module Nvvm
 
     def message
       return if !$?.success? || !@silent.empty?
+
       print "\e[32m"
       puts <<-MESSAGE
 

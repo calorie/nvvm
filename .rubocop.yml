@@ -10,7 +10,7 @@ AllCops:
     - Rakefile
     - nvvm.gemspec
 LineLength:
-  Max: 90
+  Max: 100
 Documentation:
   Enabled: false
 SpecialGlobalVars:

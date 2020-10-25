@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Validator' do
   include Nvvm::Validator
 
-  NEW_VERSION = 'v0.2.2'.freeze
+  let(:new_version) { 'v0.2.2'.freeze }
 
   describe 'validate_before_invoke' do
     before do
@@ -190,7 +190,7 @@ describe 'Validator' do
     before(:all) { $* << %w[nvvm install] }
 
     context 'available tag' do
-      before(:all) { $*[2] = NEW_VERSION }
+      before(:all) { $*[2] = new_version }
 
       it 'success to run the method' do
         expect(version?).to be_truthy
@@ -222,7 +222,7 @@ describe 'Validator' do
     context 'with arg' do
       context 'new version' do
         it 'success to run the method' do
-          expect(new_version?(NEW_VERSION)).to be_truthy
+          expect(new_version?(new_version)).to be_truthy
         end
       end
 
@@ -237,7 +237,7 @@ describe 'Validator' do
       before(:all) { $* << %w[nvvm install] }
 
       context 'new version' do
-        before(:all) { $*[2] = NEW_VERSION }
+        before(:all) { $*[2] = new_version }
 
         it 'success to run the method' do
           expect(new_version?).to be_truthy
@@ -264,7 +264,7 @@ describe 'Validator' do
 
       context 'version is not installed' do
         it 'cannot run the method' do
-          expect(proc { installed_version?(NEW_VERSION) }).to raise_error SystemExit
+          expect(proc { installed_version?(new_version) }).to raise_error SystemExit
         end
       end
     end
@@ -281,7 +281,7 @@ describe 'Validator' do
       end
 
       context 'version is not installed' do
-        before(:all) { $*[2] = NEW_VERSION }
+        before(:all) { $*[2] = new_version }
 
         it 'cannot run the method' do
           expect(proc { installed_version? }).to raise_error SystemExit

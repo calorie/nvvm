@@ -10,6 +10,7 @@ module Nvvm
       current = current_dir
       FileUtils.rm(current) if File.exist?(current)
       return if @version == 'system'
+
       src = src_dir(@version)
       abort "#{@version} is not installed." unless File.exist?(src)
       FileUtils.ln_s(src, current)

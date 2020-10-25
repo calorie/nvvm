@@ -11,8 +11,10 @@ module Nvvm
       output = []
       src    = src_dir
       return output unless File.exist?(src)
+
       Dir.glob(File.join(src, '*')).sort.each do |d|
         next if File.basename(d) == 'current'
+
         output << File.basename(d)
       end
       output

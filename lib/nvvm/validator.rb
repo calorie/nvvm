@@ -3,12 +3,12 @@ require 'mkmf'
 module Nvvm
   module Validator
     METHOD_MAP = {
-      install:   %w[version? git? new_version?],
-      update:    %w[git?],
+      install: %w[version? git? new_version?],
+      update: %w[git?],
       reinstall: %w[git? installed_version?],
-      rebuild:   %w[version? git? installed_version?],
-      use:       %w[version? installed_version?],
-      list:      %w[git?],
+      rebuild: %w[version? git? installed_version?],
+      use: %w[version? installed_version?],
+      list: %w[git?],
       uninstall: %w[version? installed_version?]
     }.freeze
 
@@ -16,6 +16,7 @@ module Nvvm
 
     def validate_before_invoke(command)
       return unless validations = METHOD_MAP[command.to_sym]
+
       validations.each { |v| send(v) }
     end
 
