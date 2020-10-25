@@ -4,13 +4,13 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-gem 'thor', '~> 0.20.0'
+gem 'thor', '~> 1.0.1'
 
 group :development do
-  gem 'coveralls', '~> 0.7.1', require: false
-  gem 'jeweler', '~> 2.0'
-  gem 'rdoc', '~> 6.0'
-  gem 'rspec', '~> 3.0'
-  gem 'rubocop', '~> 0.52.0'
-  gem 'simplecov', '~> 0.15.1'
+  gem 'coveralls', require: false
+  gem 'jeweler', github: 'technicalpickles/jeweler'
+  gem 'rdoc', '~> 6.2.1'
+  gem 'rspec', '~> 3.9.0'
+  gem 'rubocop', '~> 1.0.0'
+  gem 'simplecov', '~> 0.19.0'
 end
