@@ -68,6 +68,6 @@ after `nvvm use`, you have to reload shell:
 
 == Copyright
 
-Copyright (c) 2017 YuuShigetani. See LICENSE.txt for
+Copyright (c) 2017 Yu Shigetani. See LICENSE.txt for
 further details.
 

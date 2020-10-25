@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = %Q{Neovim version manager}
   gem.description = %Q{Neovim version manager.}
   gem.email = "s2g4t1n2@gmail.com"
-  gem.authors = ["YuuShigetani"]
+  gem.authors = ["Yu Shigetani"]
   gem.required_ruby_version = '>= 1.9'
   # dependencies defined in Gemfile
 end
