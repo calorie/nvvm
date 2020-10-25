@@ -10,19 +10,19 @@ describe 'Version' do
     end
 
     it 'echo available vim versions' do
-      expect(Nvvm::Version.list.join("\n")).to match(/\Anightly\nstable\nuntagged-.+\n(v\d\..+(\n){0,1})+\z/)
+      expect(Nvvm::Version.list.join("\n")).to match(/\Anightly\nstable\n(v\d\..+(\n){0,1})+\z/)
     end
   end
 
   describe 'versions' do
     context 'src dirctory exists' do
       it 'echo installed vim versions' do
-        expect(Nvvm::Version.versions.join("\n")).to eq "#{VERSION2}\n#{VERSION1}"
+        expect(Nvvm::Version.versions.join("\n")).to eq "#{VERSION1}\n#{VERSION2}"
       end
 
       it 'echo installed vim versions without current' do
         Nvvm::Switcher.new(VERSION1).use
-        expect(Nvvm::Version.versions.join("\n")).to eq "#{VERSION2}\n#{VERSION1}"
+        expect(Nvvm::Version.versions.join("\n")).to eq "#{VERSION1}\n#{VERSION2}"
       end
     end
     context 'src dirctory is not found' do
