@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Validator' do
   include Nvvm::Validator
 
-  let(:new_version) { 'v0.2.2'.freeze }
+  new_version = 'v0.2.2'.freeze
 
   describe 'validate_before_invoke' do
     before do
