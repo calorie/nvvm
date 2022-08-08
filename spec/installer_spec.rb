@@ -115,22 +115,14 @@ describe 'Installer', disable_cache: true do
   end
 
   describe 'message' do
-    before { system('') }
-
-    it 'command failed' do
-      allow($?).to receive(:success?).and_return(false)
+    it 'should not display' do
+      allow(@installer).to receive(:message?).and_return(false)
       expect { @installer.message }.to_not output(/success/).to_stdout
     end
 
-    it 'silent' do
-      allow($?).to receive(:success?).and_return(true)
-      expect { @installer.message }.to_not output(/success/).to_stdout
-    end
-
-    it 'success' do
-      allow($?).to receive(:success?).and_return(true)
-      installer = Nvvm::Installer.new(@version, [])
-      expect { installer.message }.to output(/success/).to_stdout
+    it 'should display' do
+      allow(@installer).to receive(:message?).and_return(true)
+      expect { @installer.message }.to output(/success/).to_stdout
     end
   end
 end
