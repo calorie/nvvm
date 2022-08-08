@@ -63,7 +63,7 @@ module Nvvm
     end
 
     def message
-      return if !$?.success? || !@silent.empty?
+      return unless message?
 
       print "\e[32m"
       puts <<-MESSAGE
@@ -75,6 +75,12 @@ module Nvvm
 
       MESSAGE
       print "\e[0m"
+    end
+
+    private
+
+    def message?
+      $?.success? && @silent.empty?
     end
   end
 end
