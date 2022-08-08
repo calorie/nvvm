@@ -1,15 +1,6 @@
 require 'simplecov'
-require 'coveralls'
 
-FORMATTERS = [
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
-].freeze
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(FORMATTERS)
-SimpleCov.start do
-  add_filter '/spec/'
-  add_filter '/vendor/'
-end
+SimpleCov.start
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
