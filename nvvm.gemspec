@@ -53,7 +53,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/calorie/nvvm".freeze
   s.licenses = ["MIT".freeze]
-  s.required_ruby_version = Gem::Requirement.new(">= 1.9".freeze)
+  s.required_ruby_version = '>= 1.9'
   s.rubygems_version = "3.3.19".freeze
   s.summary = "Neovim version manager".freeze
 
