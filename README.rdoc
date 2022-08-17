@@ -21,7 +21,8 @@ or
   $ git clone https://github.com/calorie/nvvm.git
   $ cd nvvm
   $ bundle install
-  $ rake install
+  $ gem build nvvm.gemspec
+  $ gem push nvvm-[version].gem
 
 == Setup
 please add the following line into your ~/.bash_login etc:
