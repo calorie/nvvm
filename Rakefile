@@ -11,21 +11,6 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = "nvvm"
-  gem.homepage = "http://github.com/calorie/nvvm"
-  gem.license = "MIT"
-  gem.summary = %Q{Neovim version manager}
-  gem.description = %Q{Neovim version manager.}
-  gem.email = "s2g4t1n2@gmail.com"
-  gem.authors = ["Yu Shigetani"]
-  gem.required_ruby_version = '>= 1.9'
-  # dependencies defined in Gemfile
-end
-Jeweler::RubygemsDotOrgTasks.new
-
 require 'rspec/core'
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec) do |spec|
