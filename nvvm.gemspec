@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     ".rubocop.yml",
-    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
