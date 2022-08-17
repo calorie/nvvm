@@ -20,3 +20,5 @@ pkg
 tags
 vendor/bundle
 .nvvm_cache
+
+nvvm-*.gem
