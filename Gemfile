@@ -8,6 +8,6 @@ gem 'thor', '~> 1.2.1'
 
 group :development do
   gem 'rdoc', '~> 6.4.0'
-  gem 'rspec', '~> 3.11.0'
+  gem 'rspec', '~> 3.12.0'
   gem 'rubocop', '~> 1.33.0'
 end
